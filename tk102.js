@@ -1,7 +1,7 @@
 /*
-Name:         tk102
-Description:  TK102 GPS server for Node.js
-Author:       Franklin van de Meent (https://frankl.in)
+Name:         tk102-2 
+Description:  TK102-2 GPS server for Node.js
+Author:       Franklin van de Meent (https://frankl.in) modified by Anders Lindén
 Source:       https://github.com/fvdm/nodejs-tk102
 Feedback:     https://github.com/fvdm/nodejs-tk102/issues
 License:      Unlicense (Public Domain, see UNLICENSE file)
@@ -15,7 +15,7 @@ var tk102 = new EventEmitter ();
 // device data
 var specs = [
   function (raw) {
-    // 1203292316,0031698765432,GPRMC,211657.000,A,5213.0247,N,00516.7757,E,0.00,273.30,290312,,,A*62,F,imei:123456789012345,123
+    // 180615424630,+46123456789,GPRMC,204420.000,A,5843.9394,N,01900.5889,E,1.09,234.35,110618,,,A*67,L,, imei:864493456724265,9,60.0,F:4.22V,1,138,50277,240,24,2AF9,4DDB
     var result = null;
     var str = [];
     var datetime = '';
@@ -26,7 +26,7 @@ var specs = [
       raw = raw.trim ();
       str = raw.split (',');
 
-      if (str.length === 18 && str [2] === 'GPRMC') {
+      if (str.length === 28 && str [2] === 'GPRMC') {
         datetime = str [0] .replace (/([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})([0-9]{2})/, function (s, y, m, d, h, i) {
           return '20' + y + '-' + m + '-' + d + ' ' + h + ':' + i;
         });
@@ -59,7 +59,7 @@ var specs = [
             kmh: Math.round (str [9] * 1.852 * 1000) / 1000,
             mph: Math.round (str [9] * 1.151 * 1000) / 1000
           },
-          imei: str [16] .replace ('imei:', ''),
+          imei: str [17] .replace ('imei:', ''),
           checksum: tk102.checksum (raw)
         };
       }

@@ -1,10 +1,16 @@
-TK102 GPS server
+TK102-2 GPS server
 ================
 
-[![npm](https://img.shields.io/npm/v/tk012.svg?maxAge=3600)](https://github.com/fvdm/nodejs-tk102/blob/master/CHANGELOG.md)
-[![Build Status](https://travis-ci.org/fvdm/nodejs-tk102.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-tk102)
-[![Dependency Status](https://gemnasium.com/badges/github.com/fvdm/nodejs-tk102.svg)](https://gemnasium.com/github.com/fvdm/nodejs-tk102#runtime-dependencies)
+Based on the work of [fvdm](https://github.com/fvdm) on 
+[node-tk102](https://github.com/fvdm/nodejs-tk102)
 
+This is a fork for enabling support for TK102-2 variant, there might 
+be other variants which is not compatible. TK102 and TK102-2 is almost 
+the same there are some differents in the data length with additional data 
+which makes [node-tk102](https://github.com/fvdm/nodejs-tk102) not working,
+[fvdm](https://github.com/fvdm) does not have any plan to add support for 
+TK102-2 which is wise because there are so manny variants and clones of this 
+small GPS tracker.
 
 Receive and parse GPS data from Xexun TK102 trackers.
 
